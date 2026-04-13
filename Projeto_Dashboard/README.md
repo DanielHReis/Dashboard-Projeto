@@ -11,3 +11,6 @@ Este conjunto de dados foi selecionado porque aborda um tema de alta relevância
 - Como os salários evoluíram de 2020 a 2022?
 
 Essas questões são de grande interesse para profissionais da área, estudantes e empresas, tornando o dashboard uma ferramenta prática e informativa.
+
+Feito por Anderson Gabriel, Daniel Henrique e Rafael Albuquerque.
+partes do codigo e estudos feito por IA(Deepseek e Claude)
