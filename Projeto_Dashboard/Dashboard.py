@@ -95,19 +95,19 @@ with col2:
 with col3:
     st.metric("Cargos Únicos", f"{df_sel['Cargo'].nunique()}")
 
-# GRÁFICO 1: Top 10 Cargos
+# Gráfico 1: Top 10 Cargos
 st.subheader("Top 10 Cargos com Maior Salário Médio")
 top_cargos = df_sel.groupby('Cargo')['Salario em Dolar(Anual)'].mean().sort_values(ascending=False).head(10).reset_index()
 fig_cargos = px.bar(top_cargos, x='Salario em Dolar(Anual)', y='Cargo', orientation='h', text_auto=True, title="Média Salarial por Cargo")
 fig_cargos.update_layout(yaxis={'categoryorder': 'total ascending'})
 st.plotly_chart(fig_cargos, use_container_width=True)
 
-# GRÁFICO 2: Boxplot por Experiência
+# Gráfico 2: Boxplot por Experiência
 st.subheader("Distribuição Salarial por Nível de Experiência")
 fig_experiencia = px.box(df_sel, x='Nivel de Experiencia', y='Salario em Dolar(Anual)', color='Nivel de Experiencia', title="Variação Salarial (Júnior a Executivo)")
 st.plotly_chart(fig_experiencia, use_container_width=True)
 
-# GRÁFICO 3: Evolução Anual
+# Gráfico 3: Evolução Anual
 st.subheader("Evolução do Salário Médio por Ano")
 evolucao = df_sel.groupby('Ano de Referencia')['Salario em Dolar(Anual)'].mean().reset_index()
 fig_evolucao = px.line(evolucao, x='Ano de Referencia', y='Salario em Dolar(Anual)', markers=True, title="Salário Médio Anual (USD)")
@@ -118,12 +118,12 @@ fig_evolucao.update_xaxes(
 )
 st.plotly_chart(fig_evolucao, use_container_width=True)
 
-# GRÁFICO 4: Modalidade de Trabalho
+# Gráfico 4: Modalidade de Trabalho
 st.subheader("Impacto da Modalidade de Trabalho no Salário")
 fig_modalidade = px.box(df_sel, x='Modalidade de Trabalho', y='Salario em Dolar(Anual)', color='Modalidade de Trabalho', title="Comparativo: Presencial vs Híbrido vs Online")
 st.plotly_chart(fig_modalidade, use_container_width=True)
 
-# GRÁFICO 5: Análise Geográfica
+# Gráfico 5: Análise Geográfica
 st.markdown("---")
 st.header("Análise Geográfica de Salários")
 st.markdown("Explore como os salários variam ao redor do mundo — tanto pela localização dos **funcionários** quanto das **empresas**.")
@@ -138,7 +138,7 @@ perspectiva = st.radio(
 coluna_geo = 'Residencia Funcionario' if perspectiva == "Residência do Funcionário" else 'Residencia Empresa'
 label_geo = "País do Funcionário" if perspectiva == "Residência do Funcionário" else "País da Empresa"
 
-# Tabela de conversão ISO-2 → ISO-3
+# Tabela de conversão ISO-2 para ISO-3
 ISO2_TO_ISO3 = {
     'AF':'AFG','AL':'ALB','DZ':'DZA','AD':'AND','AO':'AGO','AR':'ARG','AM':'ARM','AU':'AUS',
     'AT':'AUT','AZ':'AZE','BS':'BHS','BH':'BHR','BD':'BGD','BY':'BLR','BE':'BEL','BZ':'BLZ',
@@ -183,7 +183,7 @@ df_geo['Salário Médio (USD)'] = df_geo['Salário Médio (USD)'].round(0)
 df_geo['Salário Mediano (USD)'] = df_geo['Salário Mediano (USD)'].round(0)
 df_geo = add_iso3(df_geo, label_geo)
 
-# MAPA 1: Coroplético de salário médio
+# Mapa 1: Coroplético de salário médio
 st.subheader(f"Mapa de Calor — Salário Médio por {label_geo}")
 
 fig_map = px.choropleth(
@@ -210,7 +210,7 @@ fig_map.update_layout(
 )
 st.plotly_chart(fig_map, use_container_width=True)
 
-# MAPA 2: Mapa de bolhas — volume de profissionais
+# Mapa 2: Mapa de bolhas — volume de profissionais
 st.subheader(f"Mapa de Bolhas — Volume de Profissionais por {label_geo}")
 
 fig_bubble = px.scatter_geo(
