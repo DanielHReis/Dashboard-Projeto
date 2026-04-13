@@ -49,6 +49,10 @@ def load_data():
 
     df['Ano de Referencia'] = df['Ano de Referencia'].astype(int)
     
+    contagem = df['Cargo'].value_counts()
+    cargos_validos = contagem[contagem > 1].index
+    df = df[df['Cargo'].isin(cargos_validos)]
+
     return df
 
 df = load_data()
